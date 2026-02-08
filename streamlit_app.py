@@ -1,9 +1,21 @@
 import streamlit as st
 import datetime
 from dateutil.relativedelta import relativedelta
+import streamlit.components.v1 as components
 
 # --- CONFIG ---
 st.set_page_config(page_title="Muskolator", page_icon="🚀", layout="centered")
+
+# --- CLOUDFLARE ANALYTICS ---
+# Injecting the Cloudflare Web Analytics beacon
+components.html(
+    """
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' 
+            data-cf-beacon='{"token": "6655383f135b00432af582223e59c3ad"}'></script>
+    """,
+    height=0,
+    width=0
+)
 
 # --- STYLING ---
 st.markdown("""
