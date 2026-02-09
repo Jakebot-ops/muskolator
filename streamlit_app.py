@@ -85,8 +85,30 @@ if st.button("CALCULATE REALITY 🔮"):
     st.info(f"📝 **Why:** {reason}")
     
     # Viral Share Logic
-    share_text = f"Elon promised '{promise}' in {years} years.\n The Muskolator predicts {delivery_date.strftime('%Y')}. #ElonTime #Muskolator\n\nCheck yours at Muskolator.com"
-    st.text_area("Copy to Share:", value=share_text, height=100)
+    import urllib.parse
+    
+    share_text = f"Elon promised '{promise}' in {years} years. The Muskolator predicts {delivery_date.strftime('%Y')}. 🚀\n\n#ElonTime #Muskolator\n\nCheck yours at Muskolator.com"
+    encoded_share = urllib.parse.quote(share_text)
+    share_url = f"https://twitter.com/intent/tweet?text={encoded_share}"
+
+    st.markdown(f"""
+    <a href="{share_url}" target="_blank" style="text-decoration: none;">
+        <div style="
+            width: 100%;
+            background-color: #000000;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            font-family: sans-serif;
+            margin-top: 10px;
+        ">
+            ✖️ Share on X
+        </div>
+    </a>
+    """, unsafe_allow_html=True)
+
 
 # --- FOOTER ---
 st.markdown("<div class='footer'>Calculations powered by the Reality Distortion Field™ Detector.<br><i>Not financial advice. Not legal advice. Just math.</i></div>", unsafe_allow_html=True)
